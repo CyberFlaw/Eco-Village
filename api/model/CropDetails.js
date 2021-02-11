@@ -14,6 +14,8 @@ const dataModel = monoose.Schema({
     endingprice: {
         type: Number,
     },
+    expectedharvest: { type: Date },
+
     image: {
         type: String,
     },
