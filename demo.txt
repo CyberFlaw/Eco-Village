@@ -1,0 +1,10 @@
+{[
+    name: abc,
+    email: mail@sj.com,
+    phonenumber: 4423,
+    age: 30,
+    gender: M,
+    farmerlocation: skks,
+    fieldlocation: 1lsjs,
+    password: 2kkso22
+]}
