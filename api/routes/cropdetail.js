@@ -18,6 +18,7 @@ router.get("/", (res) => {
           quantity: req.body.quantity,
           startingprice: req.body.startingprice,
           endingprice: req.body.endingprice,
+          expextedharvest: req.body.expextedharvest,
           description: req.body.description,
           image: req.body.image
         });
