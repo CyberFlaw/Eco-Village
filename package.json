@@ -13,7 +13,8 @@
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "server": "nodemon ./api/app.js"
+    "server1": "nodemon ./api/farm.js",
+    "server2": "nodemon ./api/crop.js"
   },
   "author": "",
   "license": "ISC"
