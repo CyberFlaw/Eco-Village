@@ -14,7 +14,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "server1": "nodemon ./api/farm.js",
-    "server2": "nodemon ./api/crop.js"
+    "server2": "nodemon ./api/crop.js",
+    "server3": "nodemon ./api/price.js"
   },
   "author": "",
   "license": "ISC"
