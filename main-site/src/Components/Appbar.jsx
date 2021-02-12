@@ -1,4 +1,6 @@
 import React from "react";
+import { Link } from "react-router-dom";
+
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -24,7 +26,7 @@ export default function Headder() {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static">
+      <AppBar position="static" style={{ background: "green" }}>
         <Toolbar>
           <Navbar />
           <Typography
@@ -32,10 +34,20 @@ export default function Headder() {
             className={classes.title}
             style={{ color: "white" }}
           >
-            FarmHub
+            <Link to="/" style={{ color: "white", textDecoration: "none" }}>
+              FarmHub
+            </Link>
           </Typography>
           <Button color="inherit">
-            <i class="fa fa-power-off" aria-hidden="true"></i>
+            <i class="fa fa-bell" aria-hidden="true"></i>
+          </Button>
+          <Button color="inherit">
+            <Link
+              to="/login"
+              style={{ textDecoration: "none", color: "white" }}
+            >
+              <i class="fa fa-power-off" aria-hidden="true"></i>
+            </Link>
           </Button>
         </Toolbar>
       </AppBar>

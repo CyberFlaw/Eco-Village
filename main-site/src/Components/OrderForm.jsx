@@ -1,10 +1,4 @@
-import React, { useState } from "react";
 import { Card, TextField, Button, makeStyles } from "@material-ui/core";
-// import DatePicker from "react-datepicker";
-
-import "react-datepicker/dist/react-datepicker.css";
-
-// import ShopImage from "../assets/shop.jpg";
 
 function OrderForm() {
   const useStyles = makeStyles((theme) => ({
@@ -19,8 +13,6 @@ function OrderForm() {
     },
   }));
 
-  // const [startDate, setStartDate] = useState(new Date());
-
   const classes = useStyles();
   return (
     <Card
@@ -34,7 +26,7 @@ function OrderForm() {
       }}
     >
       <h2 style={{ fontFamily: "comic-sans", fontSize: 36, fontWeight: 500 }}>
-        Pre-Order Page
+        Sell Products
       </h2>
 
       <div
@@ -57,6 +49,11 @@ function OrderForm() {
           label="Quantity"
           type="number"
           style={{ marginBottom: 10 }}
+        />
+        <TextField
+          id="standard-basic"
+          label="Location"
+          style={{ marginLeft: 7.5, width: "45%" }}
         />
         <div
           style={{
@@ -91,7 +88,6 @@ function OrderForm() {
           <form className={classes.container} noValidate>
             <TextField
               id="date"
-              label="Birthday"
               type="date"
               defaultValue="2017-05-24"
               className={classes.textField}

@@ -11,7 +11,6 @@ function CropAdd() {
           color="secondary"
           aria-label="add"
           style={{ position: "fixed", bottom: 60, right: 50 }}
-          onclick={}
         >
           <i
             class="fa fa-plus"
