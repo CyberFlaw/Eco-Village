@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import clsx from "clsx";
 import { makeStyles } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
@@ -19,19 +19,30 @@ const useStyles = makeStyles({
 });
 
 export default function Navbar() {
+  const history = useHistory();
+
   const classes = useStyles();
   const [state, setState] = React.useState({
     left: false,
   });
+  let destinationLinks0;
+  let destinationLinks1;
+  let destinationLinks2;
 
-  const destinationLinks0 = [
-    "/preorder",
-    "/store",
-    "/prices/today",
-    "/sellercart",
-  ];
-  const destinationLinks1 = ["/news", "/articles", "/videos", "/otherinfo"];
-  const destinationLinks2 = ["/accountdetails", "/contactus"];
+  if (window.localStorage.getItem(state.role) === "farmer") {
+    destinationLinks0 = ["/preorder", "/store", "/prices/today", "/crop"];
+    destinationLinks1 = ["/news", "/articles", "/videos", "/otherinfo"];
+    destinationLinks2 = ["/accountdetails", "/contactus/farmer"];
+  } else {
+    destinationLinks0 = ["/preorder", "/store", "/crop"];
+    destinationLinks1 = ["/news", "/articles", "/videos", "/otherinfo"];
+    destinationLinks2 = ["/accountdetails", "/contactus/buyer"];
+  }
+
+  const handleLogOut = (e) => {
+    window.localStorage.setItem("");
+    history.push("/signup");
+  };
 
   const toggleDrawer = (anchor, open) => (event) => {
     if (
@@ -64,17 +75,36 @@ export default function Navbar() {
       </List>
       <Divider />
       <List>
-        {["Sell Products", "Store", "Current Prices", "Crop Details"].map(
-          (text, index) => (
-            <ListItem button key={text}>
-              <Link
-                to={destinationLinks0[index]}
-                style={{ textDecoration: "none", color: "black" }}
-              >
-                <ListItemText primary={text} />
-              </Link>
-            </ListItem>
-          )
+        {window.localStorage.getItem("role") === "farmer" ? (
+          <React.Fragment>
+            {["Sell Products", "Store", "Current Prices", "Crop Details"].map(
+              (text, index) => (
+                <ListItem button key={text}>
+                  <Link
+                    to={destinationLinks0[index]}
+                    style={{ textDecoration: "none", color: "black" }}
+                  >
+                    <ListItemText primary={text} />
+                  </Link>
+                </ListItem>
+              )
+            )}
+          </React.Fragment>
+        ) : (
+          <React.Fragment>
+            {["Sell Products", "Store", "Comodity Details"].map(
+              (text, index) => (
+                <ListItem button key={text}>
+                  <Link
+                    to={destinationLinks0[index]}
+                    style={{ textDecoration: "none", color: "black" }}
+                  >
+                    <ListItemText primary={text} />
+                  </Link>
+                </ListItem>
+              )
+            )}
+          </React.Fragment>
         )}
       </List>
       <Divider />
@@ -112,6 +142,7 @@ export default function Navbar() {
             <Link
               to="/login"
               style={{ textDecoration: "none", color: "darkred" }}
+              onClick={handleLogOut}
             >
               <ListItemText primary={text} />
             </Link>
